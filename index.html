@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Financimento BNDES</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+	integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	crossorigin=""/>
+
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+   crossorigin=""></script>
+</head>
+<style>
+		body
+		{
+			font-family: 'Raleway', sans-serif;
+	
+			background: #00873c; /* fallback for old browsers */
+			background: -webkit-linear-gradient(to left, #00873c, #271d72); /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to left, #00873c, #271d72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
+		.left
+		{
+			float: left;
+			width: 400px;
+			height: 500px;
+			overflow: scroll;
+		}
+		.right
+		{
+			float: right;
+			width: 350px;
+		}
+		.logo
+		{
+			width: 190px;
+			position: relative;
+			left: 50%;
+			margin-left: -95px;
+		}
+		.yellow
+		{
+			color: #f0c419;
+		}
+		.green
+		{
+			color: #86cbac;
+		}
+		.red
+		{
+			color: #ff5f5f;
+		}
+	
+		h1,
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="file"],
+		textarea,
+		input[type="submit"]
+		{
+			font-family: 'Raleway', sans-serif;
+			border:none;
+		}
+	
+		h1{
+	
+			font-size:40px;
+			text-align: center;
+			text-transform: uppercase;
+			color: #fff;
+		}
+		form
+		{
+			width: 800px;
+			margin: 0 auto;
+		}
+		ul
+		{
+			background: #fff;
+			margin: 0;
+			padding:0;
+		}
+		.title
+		{ 
+			text-shadow: 1px 3px 3px rgba(62, 56, 56, 0.79);
+		}
+		.title,.title-h2
+		{
+			color: #fff;
+		}
+		.title-h2
+		{
+			text-transform: uppercase;
+			font-size: 18px;
+		}
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="file"],
+		textarea,
+		select
+		{
+			border-radius: 5px;
+			background: #fff;
+			width: 400px;
+			padding: 10px;
+			margin: 5px;
+			font-size: 18px;
+		}
+		input[type="submit"]
+		{
+			background: #271d72;
+			padding: 10px 30px;
+			margin-left: 50%;
+			color: #fff;
+			font-size: 20px;
+			text-transform: uppercase;
+			cursor: pointer;
+			border-radius: 45px	
+		}
+		input[type="submit"]:hover
+		{ 
+			background: #00873c;
+		}
+		li
+		{
+			background: #fff;
+			padding: 10px;
+			font-size: 20px;
+			list-style: none;
+			margin-top: 10px;
+			border-bottom: 5px solid #ff5f62;
+		}
+		a
+		{
+			text-decoration: none;
+			color: #000;
+			text-transform: uppercase;
+		}
+		.produto
+		{
+			height: 70px;
+			float:left;
+		}
+		.total p
+		{
+			color: #fff;
+			font-size: 30px;
+			font-weight: bold;	
+		}
+		.resumo
+		{
+			color: #fff;
+			font-size: 20px;
+			padding-left: 5px;
+		}
+		::-webkit-scrollbar {
+			width: 10px;
+	
+		}
+	
+		::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		}
+	
+		::-webkit-scrollbar-thumb {
+			background-color: #271d72;
+		}
+		#mapid { width:400px; height: 400px; float: left }
+	</style>
+	
+<body>
+	<div id="app">
+		<img class="logo" src="img/logo.png">
+		<form action="https://formspree.io/thales.fdasilva@gmail.com" name="listaDeCompras" method="POST">
+			<h1 class="title">CANAL DO PROGRESSO</span></h1>
+			<h2 class="title-h2">Escolha a agência mais próxima</h2>
+		
+		<!-- <div class="left">
+				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:700px;'><div id='gmap_canvas' style='height:440px;width:700px;'></div><div><small><a href="http://www.googlemapsgenerator.com/de/">www.googlemapsgenerator.com/de/</a></small></div><div><small><a href="https://newyorkcity-pas.nl/2018/06/19/new-york-city-pass-de-aanrader-als-je-voor-het-eerst-in-new-york-bent/">lees verder</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(-22.9026332,-43.11096190000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-22.9026332,-43.11096190000001)});infowindow = new google.maps.InfoWindow({content:'<strong>Banco do Brasil</strong><br>Rua General Pereira da Silva 170<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>		
+		</div> -->
+
+		<div id="mapid"></div>
+
+
+		<div class="right">	
+
+			<input type="text" placeholder="Digite o seu nome" name="nome">
+			<input type="email" placeholder="Digite o seu e-mail" name="e-mail">
+			<input type="text" placeholder="CNPJ" name="e-mail">
+			<input type="file" name="comprovante">
+			<input type="tel" placeholder="Digite o seu telefone" name="telefone">
+			<input type="text" placeholder="valor do finaciamento" name="valorFinanciamneto">
+			<select name="horario" id="datasDisponiveis">Horários
+				<option value="#"></option>
+				<option value="1">18/10/2018 08:00</option>
+				<option value="2">20/10/2018 08:30</option>
+				<option value="3">22/10/2018 10:00</option>
+			</select>
+	
+			<input type="submit">
+		</div>
+	</div>
+
+
+
+</form>
+</div>
+
+</body>
+
+
+<script>
+
+//-22.901144,-43.1094205,15.25
+
+var planes = [
+		["Banco do Brasil - R. Gen. Pereira da Silva, 170 - Icaraí, Niterói - RJ, 24220-030",-22.901144,-43.1094205],
+		];
+
+
+/*var iconebb = L.icon({
+    iconUrl: 'leaf-green.png',
+    shadowUrl: 'https://wedologos.bladecdn.net/wp-content/uploads/2011/12/banco-do-brasil-logo.jpg',
+
+    iconSize:     [20, 40], // size of the icon
+    shadowSize:   [40, 40], // size of the shadow
+    iconAnchor:   [22, 50], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+*/
+
+var mapid = L.map('mapid').setView([-22.901, -43.109], 15.25);
+//var marker = L.marker([-22.901, -43.109],{icon: iconebb}).addTo(mapid);
+//marker.bindPopup("R. Gen. Pereira da Silva, 170 - Icaraí, Niterói - RJ, 24220-030").openPopup();
+
+for (var i = 0; i < planes.length; i++) {
+			marker = new L.marker([planes[i][1],planes[i][2]])
+				.bindPopup(planes[i][0])
+				.addTo(mapid);
+		}
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+  maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoidGhhbGVzZiIsImEiOiJjam5kdGhhZGIwdDN6M3JvMGxsaWc2dnJyIn0.Bg19bqfC7fx6AShFFV8cIQ'
+}).addTo(mapid);
+</script>
+</html>
